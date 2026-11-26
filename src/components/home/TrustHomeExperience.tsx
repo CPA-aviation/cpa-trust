@@ -29,31 +29,7 @@ import { FounderSection } from "@/components/home/FounderSection";
 import { HeroAtelier } from "@/components/home/HeroAtelier";
 import { ElegantContactDetails } from "@/components/contact/ElegantContactDetails";
 
-const { registration, trustees, deedObjectives, plannedInitiatives } =
-  SANTOSH_ARORA_TRUST;
-
-const TRUST_FACTS = [
-  {
-    value: String(trustees.length),
-    label: "Trustees",
-    note: "Named in our Trust Deed",
-  },
-  {
-    value: String(deedObjectives.length),
-    label: "Charity goals",
-    note: "Written into Clause 4",
-  },
-  {
-    value: String(HOME_FOCUS_AREAS.length),
-    label: "Focus areas",
-    note: "Where we want to help",
-  },
-  {
-    value: String(SANTOSH_ARORA_TRUST.conductedActivities.length),
-    label: "Programmes finished",
-    note: "We are new: we plan first, then act",
-  },
-] as const;
+const { registration, plannedInitiatives } = SANTOSH_ARORA_TRUST;
 
 const PROMISES = [
   {
@@ -92,25 +68,6 @@ export function TrustHomeExperience() {
 
       {/* ================= FOUNDER TRIBUTE ================= */}
       <FounderSection />
-
-      {/* ================= FACTS BAND ================= */}
-      <section aria-label="The trust in numbers" className="border-y border-white/40 bg-gradient-to-r from-[#2c5aa2] via-[#3f72bf] to-[#5587d4] text-white">
-        <Container size="wide">
-          <MotionStagger className="grid grid-cols-2 divide-white/20 py-12 sm:py-14 lg:grid-cols-4 lg:divide-x">
-            {TRUST_FACTS.map((fact) => (
-              <MotionStaggerItem key={fact.label} className="px-4 py-4 text-center lg:px-8">
-                <p className="font-serif text-5xl font-semibold text-white sm:text-6xl">
-                  {fact.value}
-                </p>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-white/90">
-                  {fact.label}
-                </p>
-                <p className="mt-1 text-sm text-white/75">{fact.note}</p>
-              </MotionStaggerItem>
-            ))}
-          </MotionStagger>
-        </Container>
-      </section>
 
       {/* ================= WHO WE ARE ================= */}
       <section
