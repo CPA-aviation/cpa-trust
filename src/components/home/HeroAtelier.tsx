@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { SANTOSH_ARORA_TRUST } from "@/data/trust";
 import { Magnetic } from "@/components/ui/MotionReveal";
 import { HalftoneLiquidSphere } from "@/components/home/HalftoneLiquidSphere";
 import "./hero-atelier.css";
@@ -31,7 +30,6 @@ interface Speck {
 }
 
 export function HeroAtelier() {
-  const { registration } = SANTOSH_ARORA_TRUST;
   const stageRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -197,18 +195,6 @@ export function HeroAtelier() {
         <span className="hero-orb hero-orb-lime" />
       </div>
 
-      {/* Top architectural hairline */}
-      <div className="hero-topbar">
-        <span className="hero-live-badge">
-          <span className="hero-beacon" aria-hidden="true" />
-          Public Charitable Trust · New Delhi
-        </span>
-        <span className="hero-topbar-rule" aria-hidden="true" />
-        <span className="hero-topbar-right">
-          Reg. {registration.registrationNumber} · DARPAN {registration.darpanStatus}
-        </span>
-      </div>
-
       {/* Main Split Crystal-Clear Stage */}
       <div className="hero-stage">
         <div className="hero-copy-col">
@@ -254,7 +240,7 @@ export function HeroAtelier() {
               priority
               fetchPriority="high"
               quality={100}
-              sizes="(max-width: 960px) 92vw, 460px"
+              sizes="(max-width: 960px) 86vw, 390px"
               className="hero-photo-img hero-photo-img-center"
             />
           </div>

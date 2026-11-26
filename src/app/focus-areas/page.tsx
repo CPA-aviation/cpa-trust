@@ -7,15 +7,17 @@ import { MotionReveal } from "@/components/ui/MotionReveal";
 import { EditorialImage } from "@/components/interior/EditorialImage";
 import { EditorialHeroReveal } from "@/components/interior/EditorialHeroReveal";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { FLOOD_RELIEF_CAMPAIGN } from "@/data/flood-relief";
 import { SANTOSH_ARORA_TRUST, type TrustObjective } from "@/data/trust";
 import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/focus-areas",
-  title: "Charitable Focus Areas — Education, Women Empowerment & Healthcare",
+  title: "Charitable Focus Areas — Flood Relief, Education, Women Empowerment & Healthcare",
   description:
-    "Six charitable focus areas and ten Trust Deed goals covering women empowerment, education, vocational skills, healthcare, and community welfare.",
+    "Charitable focus areas and ten Trust Deed goals covering flood relief, women empowerment, education, vocational skills, healthcare, and community welfare.",
   keywords: [
+    "Flood Relief",
     "Women Empowerment",
     "Education and Literacy",
     "Skill Development",
@@ -24,22 +26,53 @@ export const metadata: Metadata = buildPageMetadata({
     "Charitable Activities",
   ],
   ogImage: {
-    url: "/images/home/focus-education.jpg",
+    url: "/images/home/focus-flood-relief.jpg",
     width: 1280,
-    height: 853,
-    alt: "Students engaged in education and literacy activities supported by Santosh Arora Trust",
+    height: 720,
+    alt: "Flood relief volunteers distributing dry ration kits and clean drinking water on elevated ground — Santosh Arora Trust",
   },
 });
 
+const FOCUS_FLOOD_HIGHLIGHTS = [
+  {
+    id: "focus-shelter-care",
+    title: "Elevated Community Shelter & Care",
+    summary:
+      "Providing dry, covered temporary shelter spaces with clean blankets, safe resting areas, and attentive support for displaced mothers, children, and elders.",
+    imageSrc: "/images/flood-relief/focus-shelter-care.jpg",
+    imageAlt:
+      "Flood-affected Indian families resting safely inside a dry elevated community hall shelter while a volunteer hands clean folded blankets",
+  },
+  {
+    id: "focus-drinking-water",
+    title: "Safe Drinking Water & Dry Rations",
+    summary:
+      "Organising respectful, orderly distribution of sealed drinking water bottles and dry family food staples exclusively on dry, raised ground.",
+    imageSrc: "/images/flood-relief/focus-drinking-water.jpg",
+    imageAlt:
+      "Humanitarian volunteers on dry raised stone-paved ground handing sealed drinking water packs and dry ration bags to families in an orderly queue",
+  },
+  {
+    id: "focus-medical-camp",
+    title: "Emergency Medical Relief Desk",
+    summary:
+      "Coordinating timely first-aid, basic health checkups, and preventive care inside clean dry relief tents to protect families from flood-related illness.",
+    imageSrc: "/images/flood-relief/focus-medical-camp.jpg",
+    imageAlt:
+      "Indian doctor and volunteers conducting a hygienic medical checkup for a child and parent inside a dry elevated relief camp tent",
+  },
+] as const;
+
 const ANCHOR_NAV = [
-  { id: "women-empowerment", num: "01", label: "Women Empowerment" },
-  { id: "education-literacy", num: "02", label: "Education & Literacy" },
-  { id: "skill-development", num: "03", label: "Skill Development" },
-  { id: "healthcare-medical-relief", num: "04", label: "Healthcare & Wellness" },
-  { id: "social-welfare-relief", num: "05", label: "Social Welfare & Relief" },
+  { id: "flood-relief", num: "01", label: "Flood Relief" },
+  { id: "women-empowerment", num: "02", label: "Women Empowerment" },
+  { id: "education-literacy", num: "03", label: "Education & Literacy" },
+  { id: "skill-development", num: "04", label: "Skill Development" },
+  { id: "healthcare-medical-relief", num: "05", label: "Healthcare & Wellness" },
+  { id: "social-welfare-relief", num: "06", label: "Social Welfare & Relief" },
   {
     id: "environment-community-development",
-    num: "06",
+    num: "07",
     label: "Environment & Community",
   },
 ] as const;
@@ -85,7 +118,7 @@ export default function FocusAreasPage() {
                   id="focus-hero-heading"
                   className="text-display mt-5 text-text-primary"
                 >
-                  Six Areas,{" "}
+                  Our Focus Areas,{" "}
                   <em className="font-medium italic text-brand-lavender-deep">
                     Ten Charity Goals.
                   </em>
@@ -142,7 +175,92 @@ export default function FocusAreasPage() {
         <div aria-hidden="true" className="separator-editorial" />
       </section>
 
-      {/* SECTION 01: Women Empowerment — Cerulean Spread */}
+      {/* SECTION 01: Flood Relief & Emergency Support — Primary Campaign Spread */}
+      <Section
+        id="flood-relief"
+        surface="white"
+        spacing="lg"
+        separatorBottom
+        className="scroll-mt-24 sm:scroll-mt-28"
+        ariaLabel="Flood Relief and Emergency Support"
+      >
+        <div className="space-y-10">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-6">
+              <EditorialImage
+                src="/images/home/focus-flood-relief.jpg"
+                alt="Indian humanitarian volunteers on dry, elevated ground distributing sealed dry ration kits and clean bottled drinking water to families with a rescue boat at the water's edge below"
+                aspect="16/10"
+                direction="scaleMask"
+                priority
+                sizes="(max-width: 1024px) 100vw, 48vw"
+                caption="Dry-ground ration and clean drinking water distribution at an elevated relief camp."
+              />
+            </div>
+
+            <div className="space-y-5 lg:col-span-6">
+              <MotionReveal variant="fromRight">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="font-serif text-4xl font-medium italic text-brand-forest">
+                    01
+                  </span>
+                  <Eyebrow tone="orange" withDot={false}>
+                    Clause 4(g) · Primary Relief Campaign
+                  </Eyebrow>
+                </div>
+                <h2 className="text-heading-1 mt-4 text-text-primary">
+                  Flood Relief &amp; Emergency Support
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-text-secondary sm:text-lg">
+                  {FLOOD_RELIEF_CAMPAIGN.heroLead}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <ButtonLink href="/flood-relief" variant="primary" size="md">
+                    <span>View Full Campaign</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </ButtonLink>
+                  <ButtonLink
+                    href="/flood-relief#support"
+                    variant="secondary"
+                    size="md"
+                  >
+                    <span>Support Flood Relief</span>
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </ButtonLink>
+                </div>
+              </MotionReveal>
+            </div>
+          </div>
+
+          <div className="grid gap-6 border-t border-border-subtle pt-8 md:grid-cols-3">
+            {FOCUS_FLOOD_HIGHLIGHTS.map((item, idx) => (
+              <MotionReveal
+                key={item.id}
+                variant={idx === 0 ? "fromLeft" : idx === 2 ? "fromRight" : "rise"}
+                delay={idx * 0.06}
+              >
+                <div className="space-y-3">
+                  <EditorialImage
+                    src={item.imageSrc}
+                    alt={item.imageAlt}
+                    aspect="16/10"
+                    direction="liquidBottom"
+                    sizes="(max-width: 768px) 100vw, 31vw"
+                  />
+                  <h3 className="pt-1 font-serif text-xl font-semibold text-text-primary">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-text-secondary">
+                    {item.summary}
+                  </p>
+                </div>
+              </MotionReveal>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* SECTION 02: Women Empowerment — Cerulean Spread */}
       <section
         id="women-empowerment"
         aria-labelledby="women-empowerment-heading"
@@ -175,7 +293,7 @@ export default function FocusAreasPage() {
               <MotionReveal variant="fromRight">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="font-serif text-4xl font-medium italic text-white/80">
-                    01
+                    02
                   </span>
                   <span className="text-eyebrow rounded-full bg-white/12 px-3.5 py-1 text-white ring-1 ring-white/25">
                     Clause 4(a) · Our Main Goal
@@ -201,9 +319,6 @@ export default function FocusAreasPage() {
                     <p className="mt-3 text-base leading-relaxed text-white/80 sm:text-lg">
                       {clause.summary}
                     </p>
-                    <p className="mt-3 text-xs text-white/55">
-                      Source: {clause.sourcePage}
-                    </p>
                   </div>
                 </MotionReveal>
               ))}
@@ -226,7 +341,7 @@ export default function FocusAreasPage() {
             <MotionReveal variant="fromLeft">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="font-serif text-4xl font-medium italic text-brand-forest">
-                  02
+                  03
                 </span>
                 <Eyebrow tone="lime" withDot={false}>
                   Clauses 4(c) &amp; 4(j) · Second area on DARPAN
@@ -247,9 +362,6 @@ export default function FocusAreasPage() {
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-forest">
                         {clause.clauseRef}
-                      </span>
-                      <span className="text-xs text-text-subtle">
-                        {clause.sourcePage}
                       </span>
                     </div>
                     <h3 className="mt-1.5 font-serif text-2xl font-semibold text-text-primary">
@@ -301,7 +413,7 @@ export default function FocusAreasPage() {
             <MotionReveal variant="fromRight">
               <div className="flex items-center gap-3">
                 <span className="font-serif text-4xl font-medium italic text-text-primary">
-                  03
+                  04
                 </span>
                 <Eyebrow tone="orange" withDot={false}>
                   Clause 4(b)
@@ -325,7 +437,7 @@ export default function FocusAreasPage() {
                   {clause.summary}
                 </p>
                 <p className="mt-4 text-xs uppercase tracking-[0.14em] text-text-subtle">
-                  Source: {clause.sourcePage} · Goal only, not yet started
+                  Goal only, not yet started
                 </p>
               </MotionReveal>
             ))}
@@ -358,7 +470,7 @@ export default function FocusAreasPage() {
             <MotionReveal variant="fromRight">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="font-serif text-4xl font-medium italic text-brand-lavender-deep">
-                  04
+                  05
                 </span>
                 <Eyebrow tone="lavender" withDot={false}>
                   Clauses 4(d) &amp; 4(i)
@@ -390,9 +502,6 @@ export default function FocusAreasPage() {
                     <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-[15px]">
                       {clause.summary}
                     </p>
-                    <p className="mt-4 text-xs text-text-subtle">
-                      {clause.sourcePage}
-                    </p>
                   </div>
                 </MotionReveal>
               ))}
@@ -415,7 +524,7 @@ export default function FocusAreasPage() {
             <MotionReveal variant="fromLeft" className="lg:col-span-6">
               <div className="flex items-center gap-3">
                 <span className="font-serif text-4xl font-medium italic text-text-primary">
-                  05
+                  06
                 </span>
                 <Eyebrow tone="orange" withDot={false}>
                   Clauses 4(e), 4(f) &amp; 4(g)
@@ -452,7 +561,7 @@ export default function FocusAreasPage() {
               >
                 <div className="border-t-2 border-brand-orange pt-4">
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-subtle">
-                    {clause.clauseRef} · {clause.sourcePage}
+                    {clause.clauseRef}
                   </span>
                   <h3 className="mt-2 font-serif text-2xl font-semibold text-text-primary">
                     {clause.title}
@@ -490,7 +599,7 @@ export default function FocusAreasPage() {
             <MotionReveal variant="fromRight">
               <div className="flex items-center gap-3">
                 <span className="font-serif text-4xl font-medium italic text-brand-forest">
-                  06
+                  07
                 </span>
                 <Eyebrow tone="forest" withDot={false}>
                   Clause 4(h)
@@ -510,7 +619,7 @@ export default function FocusAreasPage() {
                   {clause.summary}
                 </p>
                 <p className="mt-3 text-xs text-text-subtle">
-                  Source: {clause.sourcePage} · Caring for nature and keeping neighbourhoods clean.
+                  Caring for nature and keeping neighbourhoods clean.
                 </p>
               </MotionReveal>
             ))}

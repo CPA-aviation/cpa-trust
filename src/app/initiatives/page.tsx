@@ -31,8 +31,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function InitiativesPage() {
-  const { plannedDirections, conductedActivities, registration } =
-    SANTOSH_ARORA_TRUST;
+  const { plannedDirections, registration } = SANTOSH_ARORA_TRUST;
 
   return (
     <>
@@ -73,31 +72,6 @@ export default function InitiativesPage() {
                   based on Clause 4 of our Trust Deed. None of it has started
                   yet.
                 </p>
-              </EditorialHeroReveal>
-
-              <EditorialHeroReveal variant="rise" delay={0.14}>
-                <div className="mt-8 grid grid-cols-2 gap-6 border-t border-border-warm pt-6">
-                  <div>
-                    <p className="text-eyebrow text-text-subtle">Plans</p>
-                    <p className="mt-1 font-serif text-3xl font-semibold text-brand-forest">
-                      {plannedDirections.length}{" "}
-                      <span className="text-base font-normal text-text-secondary">
-                        In Planning
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-eyebrow text-text-subtle">
-                      Projects Done
-                    </p>
-                    <p className="mt-1 font-serif text-3xl font-semibold text-text-primary">
-                      {conductedActivities.length}{" "}
-                      <span className="text-base font-normal text-text-secondary">
-                        So Far
-                      </span>
-                    </p>
-                  </div>
-                </div>
               </EditorialHeroReveal>
             </div>
 

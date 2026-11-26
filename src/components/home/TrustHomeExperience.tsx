@@ -5,7 +5,6 @@ import {
   ArrowUpRight,
   FileCheck2,
   HandHeart,
-  Landmark,
   Lock,
   Scale,
   Users,
@@ -26,10 +25,10 @@ import {
 import { LiquidReveal } from "@/components/ui/LiquidReveal";
 import { EditorialImage } from "@/components/interior/EditorialImage";
 import { FounderSection } from "@/components/home/FounderSection";
+import { FloodReliefSection } from "@/components/home/FloodReliefSection";
 import { HeroAtelier } from "@/components/home/HeroAtelier";
-import { ElegantContactDetails } from "@/components/contact/ElegantContactDetails";
 
-const { registration, plannedInitiatives } = SANTOSH_ARORA_TRUST;
+const { plannedInitiatives } = SANTOSH_ARORA_TRUST;
 
 const PROMISES = [
   {
@@ -68,6 +67,9 @@ export function TrustHomeExperience() {
 
       {/* ================= FOUNDER TRIBUTE ================= */}
       <FounderSection />
+
+      {/* ================= PRIMARY CAMPAIGN: FLOOD RELIEF & WOMEN EMPOWERMENT ================= */}
+      <FloodReliefSection />
 
       {/* ================= WHO WE ARE ================= */}
       <section
@@ -154,7 +156,7 @@ export function TrustHomeExperience() {
                   id="home-focus-heading"
                   className="text-heading-1 mt-5 text-brand-forest"
                 >
-                  Six causes close to our heart.
+                  Causes close to our heart.
                 </h2>
               </TextReveal>
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
@@ -171,18 +173,21 @@ export function TrustHomeExperience() {
             </MotionReveal>
           </div>
 
-          <MotionStagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <MotionStaggerItem direction="fromLeft" className="sm:col-span-2 lg:row-span-2">
-              <FocusTile area={mainArea} featured />
+          <MotionStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <MotionStaggerItem
+              direction="fromLeft"
+              className="sm:col-span-2 lg:col-span-3"
+            >
+              <FocusTile area={mainArea} index={0} featured />
             </MotionStaggerItem>
             {otherAreas.map((area, idx) => (
               <MotionStaggerItem
                 key={area.id}
                 direction={
-                  idx % 3 === 0 ? "fromRight" : idx % 3 === 1 ? "rise" : "softScale"
+                  idx % 3 === 0 ? "fromLeft" : idx % 3 === 1 ? "rise" : "fromRight"
                 }
               >
-                <FocusTile area={area} />
+                <FocusTile area={area} index={idx + 1} />
               </MotionStaggerItem>
             ))}
           </MotionStagger>
@@ -309,7 +314,7 @@ export function TrustHomeExperience() {
       </section>
 
       {/* ================= SHARED CARE SHOWCASE ================= */}
-      <section aria-labelledby="home-care-heading" className="border-t border-white/25 bg-bg-cream pt-16 pb-8 sm:pt-24 sm:pb-10">
+      <section aria-labelledby="home-care-heading" className="border-t border-white/25 bg-bg-cream py-16 sm:py-24">
         <Container size="wide">
           <div className="grid items-center gap-8 rounded-[var(--radius-panel)] bg-bg-white p-6 ring-1 ring-white sm:p-10 lg:grid-cols-12 lg:gap-12">
             <MotionReveal variant="fromLeft" className="lg:col-span-5">
@@ -362,106 +367,31 @@ export function TrustHomeExperience() {
           </div>
         </Container>
       </section>
-
-      {/* ================= OFFICIAL RECORD + CTA ================= */}
-      <section aria-labelledby="home-cta-heading" className="bg-bg-cream py-20 sm:py-28">
-        <Container size="wide">
-          <div className="grid gap-6 lg:grid-cols-12">
-            <MotionReveal variant="fromLeft" className="lg:col-span-5">
-              <div className="h-full rounded-[var(--radius-panel)] bg-bg-white p-8 ring-1 ring-border-warm sm:p-10">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-bg-sage-wash text-brand-forest">
-                    <Landmark className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h2 className="font-serif text-2xl font-semibold text-brand-forest">
-                    Our official record
-                  </h2>
-                </div>
-
-                <dl className="mt-6 divide-y divide-border-warm text-sm">
-                  {[
-                    ["Registration No.", registration.registrationNumber],
-                    ["NGO DARPAN ID", `${registration.darpanId} (${registration.darpanStatus})`],
-                    ["Registered under", registration.applicableLaw],
-                    ["Type", registration.entityType],
-                    ["Area", registration.jurisdiction],
-                  ].map(([term, detail]) => (
-                    <div key={term} className="flex flex-wrap justify-between gap-x-6 gap-y-1 py-3">
-                      <dt className="text-text-secondary">{term}</dt>
-                      <dd className="font-semibold text-text-primary">{detail}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <Link
-                  href="/governance"
-                  className="group mt-4 inline-flex min-h-[44px] items-center gap-2 py-2 text-sm font-semibold text-brand-forest underline decoration-brand-orange underline-offset-4 hover:text-brand-orange"
-                >
-                  View all registration details
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </Link>
-              </div>
-            </MotionReveal>
-
-            <MotionReveal variant="fromRight" delay={0.08} className="lg:col-span-7">
-              <div className="relative h-full overflow-hidden rounded-[var(--radius-panel)] bg-gradient-to-br from-[#2a579c] via-[#4070bd] to-[#5888d4] p-8 text-white ring-1 ring-white/45 sm:p-12">
-                <div className="relative flex h-full flex-col justify-center">
-                  <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-white ring-1 ring-white/20">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                    Get Involved
-                  </span>
-                  <h2
-                    id="home-cta-heading"
-                    className="mt-5 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl"
-                  >
-                    Start a conversation{" "}
-                    <em className="font-medium italic text-white/90">
-                      with us.
-                    </em>
-                  </h2>
-                  <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/75">
-                    Want to help, work with us or ask a question? We would love
-                    to hear from you.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <ButtonLink href="/contact" variant="accent" size="lg">
-                      Get in Touch
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </ButtonLink>
-                  </div>
-                  <div className="mt-6 max-w-xl">
-                    <ElegantContactDetails tone="forest" />
-                  </div>
-                </div>
-              </div>
-            </MotionReveal>
-          </div>
-        </Container>
-      </section>
     </div>
   );
 }
 
 function FocusTile({
   area,
+  index,
   featured = false,
 }: {
   area: (typeof HOME_FOCUS_AREAS)[number];
+  index: number;
   featured?: boolean;
 }) {
+  const num = String(index + 1).padStart(2, "0");
+
   return (
     <Link
       href={`/focus-areas#${area.id}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] bg-white ring-1 ring-white/90 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:ring-[#184385] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#184385] focus-visible:ring-offset-2 focus-visible:ring-offset-[#77a2e2]"
+      className={`group relative block w-full overflow-hidden rounded-[var(--radius-panel)] bg-[#0b1d3a] ring-1 ring-white/35 shadow-[0_22px_50px_-18px_rgba(11,29,58,0.4)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:ring-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#77a2e2] ${
+        featured
+          ? "min-h-[21rem] sm:min-h-[24rem] lg:min-h-[26rem]"
+          : "aspect-[4/3]"
+      }`}
     >
-      <div
-        className={`relative w-full shrink-0 overflow-hidden bg-[#edf4fd] ${
-          featured ? "min-h-[16rem] flex-1" : "aspect-[16/10]"
-        }`}
-      >
+      <div className="absolute inset-0">
         <LiquidReveal duration={1.35} replay>
           <Image
             src={area.imageSrc}
@@ -470,45 +400,76 @@ function FocusTile({
             quality={90}
             sizes={
               featured
-                ? "(max-width: 1024px) 100vw, 66vw"
+                ? "100vw"
                 : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             }
-            className="object-cover transition-transform duration-[850ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.10]"
+            className="object-cover transition-transform duration-[850ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
           />
         </LiquidReveal>
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/55 to-transparent transition-transform duration-900 ease-out group-hover:translate-x-[125%] motion-reduce:hidden"
-        />
-        {featured ? (
-          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#0d2140] ring-1 ring-[#77a2e2]/35 transition-transform duration-300 group-hover:translate-x-1">
-            Our main goal
-          </span>
-        ) : null}
       </div>
 
-      <div className={featured ? "p-7 sm:p-8" : "flex flex-1 flex-col p-5 sm:p-6"}>
-        <h3
-          className={`font-serif font-semibold text-[#0d2140] transition-transform duration-300 ease-out group-hover:translate-x-2 ${
-            featured ? "text-2xl sm:text-3xl" : "text-xl"
-          }`}
-        >
-          {area.title}
-        </h3>
-        <p
-          className={`mt-2 leading-relaxed text-[#1a3560] ${
-            featured ? "max-w-lg text-base" : "line-clamp-2 text-sm"
-          }`}
-        >
-          {area.description}
-        </p>
-        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#184385]">
-          Learn more
-          <ArrowUpRight
-            className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:translate-x-2"
-            aria-hidden="true"
-          />
+      {/* Rich cinematic scrim for effortless white text legibility */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 ${
+          featured
+            ? "bg-gradient-to-r from-[#08172e]/90 via-[#08172e]/55 to-[#08172e]/15"
+            : "bg-gradient-to-t from-[#08172e]/92 via-[#08172e]/38 to-transparent"
+        }`}
+      />
+
+      {/* Top badge */}
+      <div className="absolute left-5 top-5 z-10 flex items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#08172e]/55 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white ring-1 ring-white/25 backdrop-blur-md">
+          {featured ? "Primary Relief Campaign" : num}
         </span>
+      </div>
+
+      {/* Bottom / Left editorial copy overlay */}
+      <div
+        className={`relative z-10 flex h-full flex-col ${
+          featured
+            ? "max-w-xl justify-end p-7 sm:p-10 lg:justify-center lg:p-12"
+            : "justify-end p-5 sm:p-6"
+        }`}
+      >
+        <div className="flex items-end justify-between gap-4">
+          <div className="min-w-0">
+            <h3
+              className={`font-serif font-semibold leading-tight text-white ${
+                featured
+                  ? "text-3xl sm:text-4xl lg:text-[2.6rem]"
+                  : "text-xl sm:text-2xl"
+              }`}
+            >
+              {area.title}
+            </h3>
+            <p
+              className={`mt-2 leading-relaxed text-white/85 ${
+                featured
+                  ? "text-sm sm:text-base"
+                  : "line-clamp-2 text-xs sm:text-sm"
+              }`}
+            >
+              {area.description}
+            </p>
+          </div>
+
+          {!featured ? (
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#0d2140]">
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </span>
+          ) : null}
+        </div>
+
+        {featured ? (
+          <div className="mt-6">
+            <span className="inline-flex h-11 items-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-[#0d2140] shadow-[0_12px_28px_-10px_rgba(0,0,0,0.45)] transition-all duration-250 group-hover:bg-[#edf4fd]">
+              Explore Flood Relief
+              <ArrowUpRight className="h-4 w-4 text-[#184385]" aria-hidden="true" />
+            </span>
+          </div>
+        ) : null}
       </div>
     </Link>
   );

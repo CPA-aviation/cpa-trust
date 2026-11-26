@@ -418,9 +418,6 @@ export default function GovernancePage() {
                       <span className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-lavender-deep">
                         {item.clauseRef}
                       </span>
-                      <span className="text-xs text-text-subtle">
-                        {item.sourcePage}
-                      </span>
                     </div>
                     <h4 className="mt-1.5 font-serif text-xl font-semibold text-text-primary">
                       {item.title}
@@ -450,9 +447,6 @@ export default function GovernancePage() {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-forest">
                         {item.clauseRef}
-                      </span>
-                      <span className="text-xs text-text-subtle">
-                        {item.sourcePage}
                       </span>
                     </div>
                     <h4 className="mt-1.5 font-serif text-xl font-semibold text-text-primary">

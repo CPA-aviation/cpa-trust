@@ -4,6 +4,7 @@ import { absoluteUrl } from "@/lib/seo";
 
 const ROUTE_PRIORITY: Record<string, number> = {
   "/": 1.0,
+  "/flood-relief": 0.95,
   "/about": 0.9,
   "/focus-areas": 0.9,
   "/initiatives": 0.85,
@@ -14,11 +15,15 @@ const ROUTE_PRIORITY: Record<string, number> = {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const routes = [
+    ...SITE_ROUTES.map((route) => route.href),
+    "/flood-relief",
+  ];
 
-  return SITE_ROUTES.map((route) => ({
-    url: absoluteUrl(route.href),
+  return routes.map((href) => ({
+    url: absoluteUrl(href),
     lastModified,
-    changeFrequency: route.href === "/" ? "weekly" : "monthly",
-    priority: ROUTE_PRIORITY[route.href] ?? 0.7,
+    changeFrequency: href === "/" || href === "/flood-relief" ? "weekly" : "monthly",
+    priority: ROUTE_PRIORITY[href] ?? 0.7,
   }));
 }

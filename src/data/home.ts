@@ -19,6 +19,16 @@ export interface HomeInitiativeTrack {
 
 export const HOME_FOCUS_AREAS: readonly HomeFocusArea[] = [
   {
+    id: "flood-relief",
+    title: "Flood Relief & Emergency Support",
+    description:
+      "Boat rescue and evacuation, dry-ground ration and clean drinking water distribution, and volunteer relief kit packing under Clause 4(g).",
+    imageSrc: "/images/home/focus-flood-relief.jpg",
+    imageAlt:
+      "Indian humanitarian volunteers on dry, elevated ground distributing sealed dry ration kits and clean bottled drinking water to families with a rescue boat at the water's edge below",
+    accentTone: "orange",
+  },
+  {
     id: "women-empowerment",
     title: "Women Empowerment",
     description:

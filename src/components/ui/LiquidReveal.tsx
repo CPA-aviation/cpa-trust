@@ -47,6 +47,7 @@ export function LiquidReveal({
     priority
   );
   const hasPlayedInitialRef = useRef(false);
+  const controlsRef = useRef<ReturnType<typeof animate> | null>(null);
 
   const initialP = priority ? 0.35 : 0;
   const progress = useMotionValue(initialP);
@@ -64,28 +65,41 @@ export function LiquidReveal({
   }, [progress]);
 
   useEffect(() => {
-    if (prefersReduced) {
-      progress.set(1);
+    controlsRef.current?.stop();
+    controlsRef.current = null;
+
+    const syncPath = (value: number) => {
+      progress.set(value);
       if (pathRef.current) {
-        pathRef.current.setAttribute("d", buildWaveClipPath(1));
+        pathRef.current.setAttribute("d", buildWaveClipPath(value));
       }
+    };
+
+    if (prefersReduced) {
+      syncPath(1);
       return;
     }
 
     if (inView) {
       const startP = priority && !hasPlayedInitialRef.current ? 0.35 : 0;
       hasPlayedInitialRef.current = true;
-      progress.set(startP);
+      syncPath(startP);
       const controls = animate(progress, 1, {
         duration: priority && startP > 0 ? 0.72 : duration,
         delay,
         ease: LIQUID_EASE,
       });
-      return () => controls.stop();
+      controlsRef.current = controls;
+      return () => {
+        controls.stop();
+        if (controlsRef.current === controls) {
+          controlsRef.current = null;
+        }
+      };
     }
 
     if (effectiveReplay) {
-      progress.set(0);
+      syncPath(0);
     }
   }, [inView, priority, effectiveReplay, duration, delay, prefersReduced, progress]);
 

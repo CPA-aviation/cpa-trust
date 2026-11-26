@@ -137,15 +137,16 @@
   align-items: flex-start;
   text-align: left;
   min-width: 0;
+  transform: translate3d(-26px, -44px, 0);
 }
 
 .hero-display {
   max-width: 17ch;
   font-family: var(--font-hero-display), Georgia, serif;
-  font-size: clamp(2.85rem, 5.1vw, 5rem);
+  font-size: clamp(2.35rem, 4.1vw, 4rem);
   font-weight: 600;
   font-style: normal;
-  line-height: 1.04;
+  line-height: 1.06;
   letter-spacing: -0.015em;
   color: #ffffff;
   text-shadow: none;
@@ -288,7 +289,7 @@
 
 .hero-photo-frame-square {
   aspect-ratio: 1 / 1;
-  max-width: 500px;
+  max-width: 390px;
   margin-inline: auto;
 }
 
@@ -450,6 +451,9 @@
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  .hero-copy-col {
+    transform: translate3d(0, -18px, 0);
+  }
   .hero-topbar-rule,
   .hero-topbar-right {
     display: none;
@@ -461,7 +465,7 @@
     min-height: calc(100svh - 64px);
   }
   .hero-display {
-    font-size: clamp(2.35rem, 10.2vw, 3.15rem);
+    font-size: clamp(2rem, 8.6vw, 2.65rem);
   }
   .hero-scroll-anchor {
     display: none;

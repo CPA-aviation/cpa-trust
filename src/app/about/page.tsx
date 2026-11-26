@@ -70,7 +70,6 @@ export default function AboutPage() {
     objectProvisos,
     trustees,
     trusteeGovernanceSummary,
-    conductedActivities,
   } = SANTOSH_ARORA_TRUST;
 
   return (
@@ -204,13 +203,10 @@ export default function AboutPage() {
                   the environment.
                 </p>
                 <p>
-                  We are a new trust with{" "}
-                  <strong className="font-medium text-text-primary">
-                    {conductedActivities.length} completed projects
-                  </strong>{" "}
-                  so far. Right now we are setting up proper systems, sorting out
-                  our paperwork and carefully planning realistic programmes. We
-                  do not want to rush or make big claims.
+                  We are a newly registered trust. Right now we are setting up
+                  proper systems, sorting out our paperwork and carefully
+                  planning realistic programmes. We do not want to rush or make
+                  big claims.
                 </p>
               </div>
             </MotionReveal>

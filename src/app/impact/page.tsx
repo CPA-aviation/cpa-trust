@@ -92,8 +92,7 @@ const FUTURE_COMMITMENTS = [
 ] as const;
 
 export default function ImpactPage() {
-  const { intendedBeneficiaryScope, conductedActivities, registration } =
-    SANTOSH_ARORA_TRUST;
+  const { intendedBeneficiaryScope, registration } = SANTOSH_ARORA_TRUST;
 
   return (
     <>
@@ -141,10 +140,8 @@ export default function ImpactPage() {
                     Where We Are Today
                   </p>
                   <p className="mt-1">
-                    Programmes completed so far:{" "}
-                    <strong>{conductedActivities.length}</strong> (as shown on{" "}
-                    {registration.darpanId}). We are starting honestly, from
-                    the beginning.
+                    Registered on NGO DARPAN ({registration.darpanId}). We are
+                    starting honestly, from the beginning.
                   </p>
                 </div>
               </EditorialHeroReveal>
